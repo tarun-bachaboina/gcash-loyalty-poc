@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 132 40" role="img" aria-label="GCash">
+  <!-- PLACEHOLDER reversed wordmark (transparent background) for blue / navy / slate / space backgrounds. -->
+  <circle cx="20" cy="20" r="17" fill="#FFFFFF"/>
+  <text x="20" y="27" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" fill="#005CE6">G</text>
+  <text x="44" y="28" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#FFFFFF">GCash</text>
+</svg>

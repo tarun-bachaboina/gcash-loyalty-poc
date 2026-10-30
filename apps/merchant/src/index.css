@@ -1,0 +1,7 @@
+@import 'tailwindcss';
+@import '@gcash/ui/tokens.css';
+
+/* Shared tokens live in packages/ui/tokens.css; this app only sets its header colour (PRD §4.2). */
+@theme inline {
+  --color-header: var(--navy);
+}

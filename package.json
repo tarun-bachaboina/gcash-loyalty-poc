@@ -1,0 +1,21 @@
+{
+  "name": "gcash-loyalty-poc",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently -k -n api,customer,merchant,admin,pos -c blue,cyan,magenta,green,yellow \"npm:dev -w @gcash/api\" \"npm:dev -w @gcash/customer\" \"npm:dev -w @gcash/merchant\" \"npm:dev -w @gcash/admin\" \"npm:dev -w @gcash/pos\"",
+    "dev:api": "npm run dev -w @gcash/api",
+    "build": "npm run build -w @gcash/customer -w @gcash/merchant -w @gcash/admin -w @gcash/pos",
+    "start": "npm run start -w @gcash/api",
+    "test": "npm run test -w @gcash/api",
+    "typecheck": "npm run typecheck --workspaces --if-present"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "typescript": "^5.8.3"
+  }
+}

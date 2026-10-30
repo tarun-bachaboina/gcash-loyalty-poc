@@ -1,0 +1,204 @@
+/*
+ * GCash × Ayala Malls design tokens — single source for all four apps.
+ * Roles follow the rewardy-loyalty-ui skill; colours follow the PRD and the official GCash palette
+ * (Reference Docs/GCASH-BRAND.md). Hero-zone look ("Pay-wave light") follows .claude/skills/gcash-futuristic-ui.
+ * Every colour is light-dark(): OS preference by default, <html data-theme="light|dark"> forces one.
+ * Import after tailwindcss:  @import 'tailwindcss'; @import '@gcash/ui/tokens.css';
+ */
+
+@source './src';
+
+:root {
+  color-scheme: light dark;
+
+  /* Brand — GCash (PRD GCash Blue; hover is GCash's own #003C96) */
+  --brand: light-dark(#005ce6, #5a9bff);
+  --brand-strong: light-dark(#003c96, #85b5ff);
+  --brand-soft: light-dark(#e5f1ff, #14284a);
+  --on-brand: light-dark(#ffffff, #06101f);
+  --gcash-blue: #005ce6; /* fixed brand fill (customer header, tier card): white text 5.7:1 in both modes */
+  --accent: light-dark(#00a3ff, #33b5ff); /* fill under dark text only */
+  --accent-strong: light-dark(#0086d1, #33b5ff); /* accent as text / thin UI */
+  --navy: #0a192f; /* merchant + POS chrome (PRD 4.2) */
+  --console: #1e293b; /* admin chrome (PRD 5.2) */
+  --on-chrome-muted: #b9c6d8;
+
+  /* Hero zones — GCash navy (b500 → b600), fixed dark in both themes (they are objects, not chrome) */
+  --space-900: #04142d;
+  --space-800: #01245c;
+  --space-700: #0a2757;
+  --on-space: #ffffff; /* 14.9:1 on space-800 */
+  --on-space-muted: #adbddc; /* 7.9:1 on space-800 */
+  --wave-1: #007cff; /* logo bright blue: pay-wave arcs, fills, large text only */
+  --wave-2: #6fbefb; /* logo light blue: pay-wave arcs, text on space (7.4:1) */
+  --on-space-success: #6ee7b7; /* earn amounts on hero surfaces, 11:1 on space-800 */
+  --on-space-danger: #ffa8a8; /* burn amounts on hero surfaces, 9:1 on space-800 */
+  --cream: #fcf6eb; /* GCash cream, warm editorial surface */
+  --ice: #e7f6fe; /* GCash b100 */
+
+  /* Gold is earned: points and rewards only */
+  --gold-100: light-dark(#fff4d6, #3a2e10);
+  --gold-300: light-dark(#ffd56b, #ffe08f);
+  --gold-500: light-dark(#f2b21b, #f7c64a); /* fills: coin, progress */
+  --gold-600: light-dark(#b88200, #f7c64a); /* strokes and rings */
+  --gold-700: light-dark(#8a5d00, #ffd56b); /* text */
+
+  /* Status */
+  --success-100: light-dark(#d1fae5, #0f3b2e);
+  --success-500: light-dark(#10b981, #34d399); /* PRD Emerald */
+  --success-600: light-dark(#059669, #34d399);
+  --success-700: light-dark(#047857, #6ee7b7);
+  --danger-100: light-dark(#f8e6e6, #3d1a1a); /* GCash red-pale */
+  --danger-500: light-dark(#d61b2c, #ff7a7a); /* GCash red, 5.2:1 on white */
+  --danger-700: light-dark(#b50707, #ffa8a8); /* text, 5.8:1 on danger-100 */
+  /* Promo = GCash orange family (the PRD defines no promo colour) */
+  --promo-100: light-dark(#fff0e5, #3d2019);
+  --promo-500: light-dark(#ff6b00, #ff8933); /* fill only */
+  --promo-700: light-dark(#aa3e09, #ffa666); /* text, 5.5:1 on promo-100 */
+
+  /* Surfaces and text — GCash navy-tinted slates */
+  --surface-0: light-dark(#f4f7fa, #0b1220);
+  --surface-1: light-dark(#ffffff, #131c2e);
+  --surface-2: light-dark(#eef2f9, #1b2638);
+  --text-1: light-dark(#0a2757, #e8eef6); /* GCash text-primary */
+  --text-2: light-dark(#445c85, #9aa9bd); /* GCash slate-darker, 6.0:1 on surface-2 */
+  --line: light-dark(#d7e0ef, #33415a);
+  --focus-ring: var(--brand);
+
+  /* Charts (merchant analytics). Categorical order validated with the dataviz validator, both modes:
+     1 blue, 2 orange, 3 aqua. Light aqua is under 3:1 on white, so charts using it keep direct labels or a table. */
+  --chart-1: light-dark(#2a78d6, #3987e5);
+  --chart-2: light-dark(#eb6834, #d95926);
+  --chart-3: light-dark(#1baf7a, #199e70);
+  --chart-grid: light-dark(#e6ecf3, #26324a);
+  /* Sequential blue ramp for the busy-hours heatmap (low → high) */
+  --chart-seq-1: light-dark(#cde2fb, #13284a);
+  --chart-seq-2: light-dark(#9ec5f4, #184f95);
+  --chart-seq-3: light-dark(#5598e7, #256abf);
+  --chart-seq-4: light-dark(#256abf, #5598e7);
+  --chart-seq-5: light-dark(#104281, #9ec5f4);
+
+  /* Motion */
+  --ease-reward-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-reward-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-pop: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur-0: 150ms;
+  --dur-1: 240ms;
+  --dur-2: 380ms;
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+}
+:root[data-theme='dark'] {
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-brand: var(--brand);
+  --color-brand-strong: var(--brand-strong);
+  --color-brand-soft: var(--brand-soft);
+  --color-on-brand: var(--on-brand);
+  --color-gcash-blue: var(--gcash-blue);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-navy: var(--navy);
+  --color-console: var(--console);
+  --color-on-chrome-muted: var(--on-chrome-muted);
+
+  --color-gold-100: var(--gold-100);
+  --color-gold-300: var(--gold-300);
+  --color-gold-500: var(--gold-500);
+  --color-gold-600: var(--gold-600);
+  --color-gold-700: var(--gold-700);
+
+  --color-success-100: var(--success-100);
+  --color-success-500: var(--success-500);
+  --color-success-600: var(--success-600);
+  --color-success-700: var(--success-700);
+  --color-danger-100: var(--danger-100);
+  --color-danger-500: var(--danger-500);
+  --color-danger-700: var(--danger-700);
+  --color-promo-100: var(--promo-100);
+  --color-promo-500: var(--promo-500);
+  --color-promo-700: var(--promo-700);
+
+  --color-space-900: var(--space-900);
+  --color-space-800: var(--space-800);
+  --color-space-700: var(--space-700);
+  --color-on-space: var(--on-space);
+  --color-on-space-muted: var(--on-space-muted);
+  --color-on-space-success: var(--on-space-success);
+  --color-on-space-danger: var(--on-space-danger);
+  --color-wave-1: var(--wave-1);
+  --color-wave-2: var(--wave-2);
+  --color-cream: var(--cream);
+  --color-ice: var(--ice);
+
+  --color-surface-0: var(--surface-0);
+  --color-surface-1: var(--surface-1);
+  --color-surface-2: var(--surface-2);
+  --color-text-1: var(--text-1);
+  --color-text-2: var(--text-2);
+  --color-line: var(--line);
+
+  /* Manrope only (closest free match to GCash's Gilroy); font-display stays as an alias for big numbers/headlines */
+  --font-display: 'Manrope Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-sans: 'Manrope Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; /* real codes only: serials, member IDs */
+
+  /* Radius communicates object type (GCash scale: 8 / 12 / 16 / pill) */
+  --radius-chip: 8px;
+  --radius-card: 12px;
+  --radius-hero: 16px;
+
+  /* Three elevation levels, navy-tinted; e3 is reserved for reward moments */
+  --shadow-e1: 0 1px 2px rgb(1 36 92 / 0.06), 0 4px 12px rgb(1 36 92 / 0.06);
+  --shadow-e2: 0 2px 6px rgb(1 36 92 / 0.08), 0 12px 32px rgb(1 36 92 / 0.12);
+  --shadow-e3: 0 0 0 1px rgb(242 178 27 / 0.5), 0 16px 48px rgb(1 36 92 / 0.28);
+}
+
+@layer base {
+  body {
+    background: var(--surface-0);
+    color: var(--text-1);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  :focus-visible {
+    outline: 3px solid var(--focus-ring);
+    outline-offset: 2px;
+  }
+  ::selection {
+    background: var(--brand-soft);
+    color: var(--text-1);
+  }
+}
+
+@utility tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* White focus ring for everything inside blue, navy, slate and hero surfaces (brand-on-brand is ~1:1). */
+@utility focus-on-dark {
+  --focus-ring: #ffffff;
+}
+
+/* GCashLogo tone="brand": show the variant that matches the theme (OS setting, or forced by data-theme). */
+.logo-dark-theme {
+  display: none;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .logo-light-theme {
+    display: none;
+  }
+  :root:not([data-theme='light']) .logo-dark-theme {
+    display: block;
+  }
+}
+:root[data-theme='dark'] .logo-light-theme {
+  display: none;
+}
+:root[data-theme='dark'] .logo-dark-theme {
+  display: block;
+}

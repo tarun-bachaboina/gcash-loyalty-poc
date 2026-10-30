@@ -1,0 +1,7 @@
+@import 'tailwindcss';
+@import '@gcash/ui/tokens.css';
+
+/* Shared tokens live in packages/ui/tokens.css; the POS uses the merchant navy chrome (PRD §4.2). */
+@theme inline {
+  --color-header: var(--navy);
+}
